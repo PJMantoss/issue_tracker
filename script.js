@@ -7,6 +7,8 @@ function fetchIssues(){
     for (let i=0; i<issues.length; i++){
         let id = issues[i].id;
         let desc = issues[i].description;
-        let
+        let severity = issues[i].severity;
+        let assignedTo = issues[i].assignedTo;
+        let status = issues[i].status;
     }
 }
