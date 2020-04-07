@@ -14,7 +14,38 @@ function saveIssue(e){
         assignedTo: issueAssignedTo,
         status: issueStatus,
     }
+
+    if (localStorage.getItem('issues') == null){
+        let issues = [];
+        issues.push(issue);
+        localStorage.setItem('issues', JSON.stringify(issues));
+    } else {
+        let issues = JSON.parse(localStorage.getItem('issues'));
+        issues.push(issue);
+        localStorage.setItem('issues', JSON.stringify(issues));
+    }
+
+    document.getElementById('issueinputForm').reset();
+
+    fetchIssues();
+
+    e.preventDefault();
 }
+
+function setStatusClosed(id){
+    let issues = JSON.parse(localStorage.getItem('issues'));
+
+    for (let i=0; i<issues.length; i++){
+        if (issues[i].id == id){
+            issues[i].status = 'Closed';
+        }
+
+        localStorage.setItem('issues', JSON.stringify(issues));
+
+        fetchIssues();
+    }
+}
+
 
 function fetchIssues(){
     let issues = JSON.parse(localStorage.getItem('issues'));
