@@ -10,5 +10,15 @@ function fetchIssues(){
         let severity = issues[i].severity;
         let assignedTo = issues[i].assignedTo;
         let status = issues[i].status;
+
+        issuesList.innerHTML += '<div class="well">' +
+                                 '<h6> Issues ID: ' + id + '</h6>' +
+                                 '<p><span class="label label-info">' + status + '</span></p>' +
+                                 '<h3>' + desc + '</h3>' + 
+                                 '<p><span class="glyphicon glyphicon-time"></span>' + severity + '</p>' +
+                                 '<p><span class="glyphicon glyphicon-user"></span>' + assignedTo + '</p>' +
+                                 '<a href="#" onclick="setStatusClosed(\''+id+'\')" class="btn btn-warning"></a>' +
+                                 '<a href="#" onclick="deleteIssue(\''+id+'\')" class="btn btn-danger"></a>'
+
     }
 }
